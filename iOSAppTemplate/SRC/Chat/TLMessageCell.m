@@ -77,6 +77,7 @@
     if (_messageBackgroundImageView == nil) {
         _messageBackgroundImageView = [[UIImageView alloc] init];
         [_messageBackgroundImageView setHidden:YES];
+        _messageBackgroundImageView.backgroundColor = [UIColor clearColor];
     }
     return _messageBackgroundImageView;
 }

@@ -7,17 +7,9 @@
 //
 
 #import "TLChatViewController.h"
-#import "TLChatMessageViewContrller.h"
-#import "TLChatBoxViewController.h"
 #import "TLUserHelper.h"
 
-@interface TLChatViewController () <TLChatMessageViewControllerDelegate, TLChatBoxViewControllerDelegate>
-{
-    CGFloat viewHeight;
-}
-
-@property (nonatomic, strong) TLChatMessageViewContrller *chatMessageVC;
-@property (nonatomic, strong) TLChatBoxViewController *chatBoxVC;
+@interface TLChatViewController ()
 
 @end
 
@@ -26,13 +18,16 @@
 #pragma mark - LifeCycle
 - (void) viewDidLoad {
     [super viewDidLoad];
+    
     [self setAutomaticallyAdjustsScrollViewInsets:NO];
     viewHeight = HEIGHT_SCREEN - HEIGHT_NAVBAR - HEIGHT_STATUSBAR;
     
     [self.view addSubview:self.chatMessageVC.view];
     [self addChildViewController:self.chatMessageVC];
+    
     [self.view addSubview:self.chatBoxVC.view];
     [self addChildViewController:self.chatBoxVC];
+    
 }
 
 #pragma mark - TLChatMessageViewControllerDelegate

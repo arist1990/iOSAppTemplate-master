@@ -13,6 +13,9 @@
 #import "TLVoiceMessageCell.h"
 #import "TLSystemMessageCell.h"
 
+#import "TLChatViewController.h"
+#import "TLChatBoxViewController.h"
+
 @interface TLChatMessageViewContrller ()
 
 @property (nonatomic, strong) UITapGestureRecognizer *tapGR;
@@ -29,6 +32,7 @@
     [self.view addGestureRecognizer:self.tapGR];
     [self.tableView setTableFooterView:[UIView new]];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    self.tableView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag;
     
     [self.tableView registerClass:[TLTextMessageCell class] forCellReuseIdentifier:@"TextMessageCell"];
     [self.tableView registerClass:[TLImageMessageCell class] forCellReuseIdentifier:@"ImageMessageCell"];
@@ -83,6 +87,16 @@
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView
 {
     
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    TLChatViewController *ctrl = (TLChatViewController *)self.parentViewController;
+    if (ctrl && [ctrl isMemberOfClass:[TLChatViewController class]]) {
+        if ([ctrl.chatBoxVC.chatBox isFirstResponder]) {
+            [ctrl.chatBoxVC.chatBox resignFirstResponder];
+        }
+//        [ctrl.chatBoxVC.chatBox resignFirstResponder];
+    }
 }
 
 #pragma mark - Event Response

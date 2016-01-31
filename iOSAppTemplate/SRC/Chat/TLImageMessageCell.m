@@ -64,6 +64,7 @@
 {
     if (_messageImageView == nil) {
         _messageImageView = [[UIImageView alloc] init];
+        _messageImageView.backgroundColor = [UIColor redColor];
         [_messageImageView setContentMode:UIViewContentModeScaleAspectFill];
         [_messageImageView setClipsToBounds:YES];
     }

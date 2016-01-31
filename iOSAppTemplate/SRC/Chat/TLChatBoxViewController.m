@@ -7,17 +7,11 @@
 //
 
 #import "TLChatBoxViewController.h"
-#import "TLChatBox.h"
-#import "TLChatBoxMoreView.h"
-#import "TLChatBoxFaceView.h"
 
 @interface TLChatBoxViewController () <TLChatBoxDelegate, TLChatBoxFaceViewDelegate, TLChatBoxMoreViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (nonatomic, assign) CGRect keyboardFrame;
 
-@property (nonatomic, strong) TLChatBox *chatBox;
-@property (nonatomic, strong) TLChatBoxMoreView *chatBoxMoreView;
-@property (nonatomic, strong) TLChatBoxFaceView *chatBoxFaceView;
 
 @end
 

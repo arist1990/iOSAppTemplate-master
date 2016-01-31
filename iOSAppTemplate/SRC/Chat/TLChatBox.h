@@ -34,5 +34,6 @@ typedef NS_ENUM(NSInteger, TLChatBoxStatus) {
 - (void) addEmojiFace:(TLFace *)face;
 - (void) sendCurrentMessage;
 - (void) deleteButtonDown;
+- (BOOL) isFirstResponder;
 
 @end

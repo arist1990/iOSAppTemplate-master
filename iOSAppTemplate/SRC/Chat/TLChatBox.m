@@ -65,7 +65,19 @@
     [_moreButton setImage:[UIImage imageNamed:@"TypeSelectorBtnHL_Black"] forState:UIControlStateHighlighted];
     [_faceButton setImage:[UIImage imageNamed:@"ToolViewEmotion"] forState:UIControlStateNormal];
     [_faceButton setImage:[UIImage imageNamed:@"ToolViewEmotionHL"] forState:UIControlStateHighlighted];
+    
+    
+    // 表情框也要隐藏
+//    if (_delegate) {
+//        [_delegate chatBox:self changeChatBoxHeight:HEIGHT_TABBAR];
+//    }
+    
+    
     return [super resignFirstResponder];
+}
+
+- (BOOL) isFirstResponder{
+    return [self.textView isFirstResponder];
 }
 
 - (void) addEmojiFace:(TLFace *)face
@@ -278,19 +290,20 @@
 - (void) talkButtonDown:(UIButton *)sender
 {
     [_talkButton setTitle:@"松开 结束" forState:UIControlStateNormal];
-    [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.5]] forState:UIControlStateNormal];
+//    [_talkButton setHighlighted:YES];
+//    [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.5]] forState:UIControlStateNormal];
 }
 
 - (void) talkButtonUpInside:(UIButton *)sender
 {
     [_talkButton setTitle:@"按住 说话" forState:UIControlStateNormal];
-    [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+//    [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
 }
 
 - (void) talkButtonUpOutside:(UIButton *)sender
 {
     [_talkButton setTitle:@"按住 说话" forState:UIControlStateNormal];
-    [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
+//    [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
 }
 
 #pragma mark - Getter
@@ -360,6 +373,7 @@
         [_talkButton setTitle:@"松开 结束" forState:UIControlStateHighlighted];
         [_talkButton setTitleColor:[UIColor colorWithRed:0.3 green:0.3 blue:0.3 alpha:1.0] forState:UIControlStateNormal];
         [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor colorWithRed:0.7 green:0.7 blue:0.7 alpha:0.5]] forState:UIControlStateHighlighted];
+        [_talkButton setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forState:UIControlStateNormal];
         [_talkButton.titleLabel setFont:[UIFont boldSystemFontOfSize:16.0f]];
         [_talkButton.layer setMasksToBounds:YES];
         [_talkButton.layer setCornerRadius:4.0f];
